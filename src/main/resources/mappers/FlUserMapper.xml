@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ant.vxserver.dao.FlUserMapper" >
+  <resultMap id="BaseResultMap" type="com.ant.vxserver.pojo.FlUser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="leader" property="leader" jdbcType="INTEGER" />
+    <result column="weichatname" property="weichatname" jdbcType="VARCHAR" />
+    <result column="weichatgroup" property="weichatgroup" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="fl_account" property="flAccount" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_fl_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ant.vxserver.pojo.FlUser" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_fl_user (leader, weichatname, weichatgroup, 
+      phone, fl_account, `role`, 
+      create_time, update_time)
+    values (#{leader,jdbcType=INTEGER}, #{weichatname,jdbcType=VARCHAR}, #{weichatgroup,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{flAccount,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER},
+    now(), now())
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ant.vxserver.pojo.FlUser" >
+    update t_fl_user
+    set leader = #{leader,jdbcType=INTEGER},
+      weichatname = #{weichatname,jdbcType=VARCHAR},
+      weichatgroup = #{weichatgroup,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      fl_account = #{flAccount,jdbcType=VARCHAR},
+      `role` = #{role,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, leader, weichatname, weichatgroup, phone, fl_account, `role`, create_time, 
+    update_time
+    from t_fl_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, leader, weichatname, weichatgroup, phone, fl_account, `role`, create_time, 
+    update_time
+    from t_fl_user
+  </select>
+</mapper>
