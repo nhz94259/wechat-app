@@ -2,10 +2,9 @@ package com.ant.vxserver.service.impl;
 
 import com.ant.vxserver.commons.Const;
 import com.ant.vxserver.commons.ServerResponse;
-import com.ant.vxserver.dao.FlUserMapper;
+
 import com.ant.vxserver.pojo.FlUser;
 import com.ant.vxserver.service.IFlUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,8 +13,8 @@ import org.springframework.stereotype.Service;
 @Service("iFlUserService")
 public class IFlUserServiceImpl implements IFlUserService {
 
-    @Autowired
-    FlUserMapper fluserMapper;
+//    @Autowired
+//    FlUserMapper fluserMapper;
 
 
     @Override
@@ -36,10 +35,10 @@ public class IFlUserServiceImpl implements IFlUserService {
         user.setRole(Const.Role.ROLE_CUSTOMER);
 
 
-        int resultCount = fluserMapper.insert(user);
-        if(resultCount == 0){
-            return ServerResponse.createByErrorMessage("注册失败");
-        }
+       // int resultCount = fluserMapper.insert(user);
+//        if(resultCount == 0){
+//            return ServerResponse.createByErrorMessage("注册失败");
+//        }
         return ServerResponse.createBySuccessMessage("注册成功");
     }
 

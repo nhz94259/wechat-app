@@ -1,7 +1,6 @@
 package com.ant.vxserver.utils;
 
 import com.alibaba.fastjson.JSONObject;
-import com.jfinal.core.Controller;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -16,7 +15,7 @@ import java.io.IOException;
 /**
  * Created by wolf   2018/8/16
  */
-public class ApiBaseAction extends Controller {
+public class ApiBaseAction  {
 
     protected Logger logger = Logger.getLogger(getClass());
 
@@ -42,21 +41,8 @@ public class ApiBaseAction extends Controller {
         return restTemplate.build();
     }
 
-    public JSONObject getJsonRequest() {
-        JSONObject result = null;
-        StringBuilder sb = new StringBuilder();
-        try (BufferedReader reader = request.getReader();) {
-            char[] buff = new char[1024];
-            int len;
-            while ((len = reader.read(buff)) != -1) {
-                sb.append(buff, 0, len);
-            }
-            result = JSONObject.parseObject(sb.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return result;
+    public  String getPara(String  para){
+        return      request.getParameter(para);
     }
 
 }

@@ -1,3 +1,4 @@
+/*
 package com.ant.vxserver.controller;
 
 import com.ant.vxserver.sdk.api.ApiConfigKit;
@@ -14,19 +15,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
+*/
 /**
  * 微信小程序用户api接口
  * @author L.cm
- */
+ *//*
+
 @RestController
 @RequestMapping("/api/vxuser/")
 public class WxaUserApiController extends WxaController {
 	// 微信用户接口api
 	protected WxaUserApi wxaUserApi = Duang.duang(WxaUserApi.class);
 	
-	/**
+	*/
+/**
 	 * 登陆接口
-	 */
+	 *//*
+
 	@RequestMapping(value = "login_by_weixin.do",method = RequestMethod.POST)
 	@ResponseBody
 	public void login() {
@@ -52,10 +57,12 @@ public class WxaUserApiController extends WxaController {
 		renderJson("sessionId", sessionId);
 	}
 	
-	/**
+	*/
+/**
 	 * 服务端解密用户信息接口
 	 * 获取unionId
-	 */
+	 *//*
+
 	@RequestMapping(value = "info.do",method = RequestMethod.POST)
 	@ResponseBody
 	public void info() {
@@ -112,3 +119,4 @@ public class WxaUserApiController extends WxaController {
 	}
 
 }
+*/
